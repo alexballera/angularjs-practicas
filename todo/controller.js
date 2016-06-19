@@ -5,12 +5,6 @@ angular.module('toDoList', ['LocalStorageModule'])
     }else{
       $scope.todo = []
     }
-    /*
-    {
-        actividad: 'Tarea',
-        fecha: 'fecha'
-    }
-    */
     $scope.$watchCollection('todo', function(newValue, oldValue) {
       localStorageService.set('angular-todolist', $scope.todo)
     })

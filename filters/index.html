@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='myModule'>
+<head>
+  <meta charset="UTF-8">
+  <title>Filtros con AngularJS</title>
+  <style>
+    [ng\: cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x- ng-cloak{
+      display: none !important;
+    }
+  </style>
+</head>
+  <body ng-controller="FiltersController">
+  <!-- {{mi_html | removeHtml}} -->
+  {{mi_html | json}}
+  <p>
+    {{ costo | currency: 'Bs '}}
+  </p>
+    <script src="../angular.min.js"></script>
+    <script src="angular-local-storage.min.js"></script>
+    <script src="controller.js"></script>
+  </body>
+</html>
