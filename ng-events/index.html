@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+  <meta charset="UTF-8">
+  <title>ng-events con AngularJS</title>
+  <script src="../angular.min.js"></script>
+  <style>
+  [ng\: cloak],
+  [ng-cloak],
+  [data-ng-cloak],
+  [x-ng-cloak],
+  .ng-cloak,
+  .x- ng-cloak{
+    display: none !important;
+  }
+  .hover{
+    background-color: rgb(200, 50, 50);
+  }
+  .no-hover{
+    background-color: rgb(50, 200, 50);
+  }
+  </style>
+</head>
+<body>
+  <button ng-mousemove="bandera = true" ng-mouseout='bandera=false' ng-click="bandera = !bandera" ng-class="{'hover': bandera, 'no-hover': !bandera}">
+    Hover me
+  </button>
+  <span ng-show="bandera">&lt; - click me</span>
+  <p>
+    {{bandera | json}}
+  </p>
+</body>
+</html>

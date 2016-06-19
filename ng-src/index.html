@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='customDirective'>
+<head>
+  <meta charset="UTF-8">
+  <title>ng-src & np-cloak en AngularJS</title>
+  <script src="../angular.min.js"></script>
+  <script src="app.js"></script>
+    <style>
+    [ng\: cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x- ng-cloak{
+      display: none !important;
+    }
+  </style>
+</head>
+<body ng-controller="AppCtrl">
+  <ul class="no-list" ng-cloak>
+    <li ng-repeat="repo in repos">
+      <img ng-src="{{repo.owner.avatar_url}}" alt="">
+      <h1>{{repo.name}}</h1>
+    </li>
+  </ul>
+</body>
+</html>
