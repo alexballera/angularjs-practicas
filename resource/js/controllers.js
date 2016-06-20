@@ -14,23 +14,25 @@ angular.module('FinalApp')
 	}
 	// query() ~> GET /posts ~> Un arreglo de posts
 })
-.controller('PostController', function ($scope, PostResource, $routeParams) {
+.controller('PostController', function ($scope, PostResource, $routeParams, $location) {
 	$scope.title = 'Editar Post'
 	$scope.post = PostResource.get({id: $routeParams.id})
 	$scope.savePost = function () {
 		PostResource.update({id: $scope.post.id}, {data: $scope.post}, function (data) {
 			console.log(data)
 			alert('El Post fue editado')
+			$location.path('/post/' + $scope.post.id)
 		})
 	}
 })
-.controller('NewPostController', function ($scope, PostResource) {
+.controller('NewPostController', function ($scope, PostResource, $location) {
 	$scope.post = {}
 	$scope.title = 'Crear Post'
 	$scope.savePost = function () {
 		PostResource.save({data: $scope.post}, function (data) {
 			console.log(data)
 			alert('El Post fue creado')
+			$location.path('/')
 		})
 	}
 })
