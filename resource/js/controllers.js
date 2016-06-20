@@ -1,11 +1,10 @@
 angular.module('FinalApp')
-.controller('MainController', function ($scope, $resource) {
-	Post = $resource('http://jsonplaceholder.typicode.com/posts/:id', {id: '@id'})
+.controller('MainController', function ($scope, $resource, PostResource) {
 	User = $resource('http://jsonplaceholder.typicode.com/users/:id', {id: '@id'})
-	$scope.posts = Post.query()
+	$scope.posts = PostResource.query()
 	$scope.users = User.query()
 	$scope.removePost = function (post) {
-		Post.delete({id: post.id}, function (data) {
+		PostResource.delete({id: post.id}, function (data) {
 			console.log(data)
 			alert('El Post fue eliminado')
 		})
@@ -15,16 +14,14 @@ angular.module('FinalApp')
 	}
 	// query() ~> GET /posts ~> Un arreglo de posts
 })
-.controller('PostController', function ($scope, $resource, $routeParams) {
-	Post = $resource('http://jsonplaceholder.typicode.com/posts/:id', {id: '@id'})
-	$scope.post = Post.get({id: $routeParams.id})
+.controller('PostController', function ($scope, PostResource, $routeParams) {
+	$scope.post = PostResource.get({id: $routeParams.id})
 })
-.controller('NewPostController', function ($scope, $resource) {
-	Post = $resource('http://jsonplaceholder.typicode.com/posts/:id', {id: '@id'})
+.controller('NewPostController', function ($scope, PostResource) {
 	$scope.post = {}
 	$scope.title = 'Crear post'
 	$scope.savePost = function () {
-		Post.save({data: $scope.post}, function (data) {
+		PostResource.save({data: $scope.post}, function (data) {
 			console.log(data)
 			alert('El Post fue creado')
 		})
